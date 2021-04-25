@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.druid.master.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.url."
+    },
+    {
+      "name": "spring.datasource.druid.slave.enabled",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.enabled."
+    }
+  ] }
