@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="updateBy"       column="update_by"         />
 		<result property="updateTime"     column="update_time"       />
 		<result property="remark"         column="remark"            />
-		<collection  property="columns"  javaType="java.util.List"  resultMap="GenTableColumnResult" />
+		<collection property="columns" javaType="java.util.List" resultMap="GenTableColumnResult" />
 	</resultMap>
 	
 	<resultMap type="GenTableColumn" id="GenTableColumnResult">
@@ -89,8 +89,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectDbTableListByNames" resultMap="GenTableResult">
-		select table_name, table_comment, create_time, update_time from information_schema.tables
-		where table_name NOT LIKE 'qrtz_%' and table_name NOT LIKE 'gen_%' and table_schema = (select database())
+		select table_name, table_comment, create_time, update_time from view_self_table
+		where table_name NOT LIKE 'qrtz_%' and table_name NOT LIKE 'gen_%' and table_schema = (select current_schema()) and table_catalog  = (select current_catalog)
 		and table_name in
 	    <foreach collection="array" item="name" open="(" separator="," close=")">
  			#{name}
@@ -98,8 +98,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="selectTableByName" parameterType="String" resultMap="GenTableResult">
-		select table_name, table_comment, create_time, update_time from information_schema.tables
-		where table_comment <![CDATA[ <> ]]> '' and table_schema = (select database())
+		select table_name, table_comment, create_time, update_time from view_self_table
+		where table_comment <![CDATA[ <> ]]> '' and table_schema = ( select current_schema()) and table_catalog  = (select current_catalog)
 		and table_name = #{tableName}
 	</select>
 	
@@ -107,23 +107,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    SELECT t.table_id, t.table_name, t.table_comment, t.sub_table_name, t.sub_table_fk_name, t.class_name, t.tpl_category, t.package_name, t.module_name, t.business_name, t.function_name, t.function_author, t.gen_type, t.gen_path, t.options, t.remark,
 			   c.column_id, c.column_name, c.column_comment, c.column_type, c.java_type, c.java_field, c.is_pk, c.is_increment, c.is_required, c.is_insert, c.is_edit, c.is_list, c.is_query, c.query_type, c.html_type, c.dict_type, c.sort
 		FROM gen_table t
-			 LEFT JOIN gen_table_column c ON t.table_id = c.table_id
-		where t.table_id = #{tableId} order by c.sort
+			 LEFT JOIN gen_table_column c ON t.table_id = cast(c.table_id as integer)
+		where t.table_id = #{tableId,jdbcType=BIGINT} order by c.sort
 	</select>
 	
 	<select id="selectGenTableByName" parameterType="String" resultMap="GenTableResult">
 	    SELECT t.table_id, t.table_name, t.table_comment, t.sub_table_name, t.sub_table_fk_name, t.class_name, t.tpl_category, t.package_name, t.module_name, t.business_name, t.function_name, t.function_author, t.gen_type, t.gen_path, t.options, t.remark,
 			   c.column_id, c.column_name, c.column_comment, c.column_type, c.java_type, c.java_field, c.is_pk, c.is_increment, c.is_required, c.is_insert, c.is_edit, c.is_list, c.is_query, c.query_type, c.html_type, c.dict_type, c.sort
 		FROM gen_table t
-			 LEFT JOIN gen_table_column c ON t.table_id = c.table_id
+			 LEFT JOIN gen_table_column c ON t.table_id = cast(c.table_id as integer)
 		where t.table_name = #{tableName} order by c.sort
 	</select>
 	
 	<select id="selectGenTableAll" parameterType="String" resultMap="GenTableResult">
-	    SELECT t.table_id, t.table_name, t.table_comment, t.sub_table_name, t.sub_table_fk_name, t.class_name, t.tpl_category, t.package_name, t.module_name, t.business_name, t.function_name, t.function_author, t.options, t.remark,
+	    SELECT t.table_id, t.table_name, t.table_comment, t.sub_table_name, t.sub_table_fk_name, t.class_name, t.tpl_category, t.package_name, t.module_name, t.business_name, t.function_name, t.function_author, t.gen_type, t.gen_path, t.options, t.remark,
 			   c.column_id, c.column_name, c.column_comment, c.column_type, c.java_type, c.java_field, c.is_pk, c.is_increment, c.is_required, c.is_insert, c.is_edit, c.is_list, c.is_query, c.query_type, c.html_type, c.dict_type, c.sort
 		FROM gen_table t
-			 LEFT JOIN gen_table_column c ON t.table_id = c.table_id
+			 LEFT JOIN gen_table_column c ON t.table_id = cast(c.table_id as integer)
 		order by c.sort
 	</select>
 	
@@ -166,8 +166,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <set>
             <if test="tableName != null">table_name = #{tableName},</if>
             <if test="tableComment != null and tableComment != ''">table_comment = #{tableComment},</if>
-            <if test="subTableName != null">sub_table_name = #{subTableName},</if>
-            <if test="subTableFkName != null">sub_table_fk_name = #{subTableFkName},</if>
+            <if test="subTableName != null and subTableName != ''">sub_table_name = #{subTableName},</if>
+            <if test="subTableFkName != null and subTableFkName != ''">sub_table_fk_name = #{subTableFkName},</if>
             <if test="className != null and className != ''">class_name = #{className},</if>
             <if test="functionAuthor != null and functionAuthor != ''">function_author = #{functionAuthor},</if>
             <if test="genType != null and genType != ''">gen_type = #{genType},</if>
