@@ -1,3 +1,7 @@
+[![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](README-zh.md)
+
+[English](README.md) | [中文](README-zh.md)
+
 ## 平台简介
 
 若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
