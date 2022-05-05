@@ -1,41 +1,47 @@
-## 平台简介
+[![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](README-zh.md)
 
-若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
+[English](README.md) | [中文](README-zh.md)
 
-1. 主要工作是融合两个版本（Ruoyi-vue 和 Ruoyi-PostgreSQL）融合在一起。
-2. 前端采用Vue、Element UI。
-3. 后端采用Spring Boot、Spring Security、Redis & Jwt。
-4. 权限认证使用Jwt，支持多终端认证系统。
-5. 支持加载动态权限菜单，多方式轻松权限控制。
-6. 高效率开发，使用代码生成器可以一键生成前后端代码。
-7. 提供了单应用版本[RuoYi-Vue-fast](https://github.com/yangzongzhuan/RuoYi-Vue-fast)，Oracle版本[RuoYi-Vue-Oracle](https://github.com/yangzongzhuan/RuoYi-Vue-Oracle)，保持同步更新。
-8. 不分离版本，请移步[RuoYi](https://gitee.com/y_project/RuoYi)，微服务版本，请移步[RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)
+## Description
 
-特别鸣谢：[element](https://github.com/ElemeFE/element)，[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，[eladmin-web](https://github.com/elunez/eladmin-web)。
+Ruoyi is a set of open-source rapid development platforms, without reservation to individuals and enterprises for free use.
 
-## 如何运行本项目
+### Major features
 
-### 后端项目启动准备
+1. The main work was integrating the two versions (Ruoyi-vue and Ruoyi-PostgreSQL).
+2. Front-end using Vue, Element UI.
+3. The backend uses Spring Boot, Spring Security, Redis & Jwt.
+4. Permission authentication using Jwt, supporting multi-terminal authentication system.
+5. Support loading dynamic permission menu, multi-mode easy permission control.
+6. Inefficient development, the code generator can generate front and back-end code in one click.
+7. Single application version [RuoYi-Vue-fast](https://github.com/yangzongzhuan/RuoYi-Vue-fast), Oracle version [RuoYi-Vue-Oracle](https://github.com/ yangzongzhuan/RuoYi-Vue-Oracle) to keep synchronized and updated.
+8. For the non-separated version, please move to [RuoYi](https://gitee.com/y_project/RuoYi), and for the microservice version, please proceed to [RuoYi-Cloud.](https://gitee.com/y_project/RuoYi-Cloud)
 
-首先设置数据库连接，打开application-postgresql.yml文件
+Special thanks to [element](https://github.com/ElemeFE/element)，[vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)， and [eladmin-web](https://github.com/elunez/eladmin-web)。
 
-`ruoyi-admin/src/main/resources/application-postgresql.yml`
+## How to run this project
 
-更改url，username，password，其他不用动即可。
+### Back-end project start-up preparation
 
-然后打开sql文件
+First, set up the database connection, and open the `application-postgresql.yml` file.
+
+`ruoyi-admin/src/main/resources/application-postgresql.yml`.
+
+Change the URL, username, password, and nothing else.
+
+Then open the SQL file.
 
 `sql/ry_postgresql-final.sql`和`sql/quartz_postgresql.sql`
 
-执行文件即可。
+Just execute the file.
 
-接下来，启动项目，后端就已经启动完成了。
+Next, start the project, and the backend has been created and completed.
 
-### 前端项目启动准备
+### Front-end project start-up preparation
 
-进入`ruoyi-ui`文件夹
+Go to the `ruoyi-ui` folder.
 
-先后运行
+Run the following commands in succession:
 
 ```powershell
 npm install
@@ -45,31 +51,33 @@ npm install
 npm run dev
 ```
 
-前端项目以开发模式启动完毕！
+The front-end project is launched in development mode!
 
-## 内置功能
+## Built-in functions
 
-1.  用户管理：用户是系统操作者，该功能主要完成系统用户配置。
-2.  部门管理：配置系统组织机构（公司、部门、小组），树结构展现支持数据权限。
-3.  岗位管理：配置系统用户所属担任职务。
-4.  菜单管理：配置系统菜单，操作权限，按钮权限标识等。
-5.  角色管理：角色菜单权限分配、设置角色按机构进行数据范围权限划分。
-6.  字典管理：对系统中经常使用的一些较为固定的数据进行维护。
-7.  参数管理：对系统动态配置常用参数。
-8.  通知公告：系统通知公告信息发布维护。
-9.  操作日志：系统正常操作日志记录和查询；系统异常信息日志记录和查询。
-10. 登录日志：系统登录日志记录查询包含登录异常。
-11. 在线用户：当前系统中活跃用户状态监控。
-12. 定时任务：在线（添加、修改、删除)任务调度包含执行结果日志。
-13. 代码生成：前后端代码的生成（java、html、xml、sql）支持CRUD下载 。
-14. 系统接口：根据业务代码自动生成相关的api接口文档。
-15. 服务监控：监视当前系统CPU、内存、磁盘、堆栈等相关信息。
-16. 缓存监控：对系统的缓存信息查询，命令统计等。
-17. 在线构建器：拖动表单元素生成相应的HTML代码。
-18. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
+1.  User management: the user is the system operator; this function mainly completes the system user configuration.
+2. Department Management: Configure the system organization (company, department, group), and the tree structure supports data authority.
+3. Position management: configure the system users belong to hold positions. 4.
+4. Menu management: configure the system menu, operation privileges, button privilege identification, etc.
+5. Role management: role menu permission assignment, set the organization's role of data scope authority.
+6. Dictionary management: maintenance of some more static data often used in the system.
+7. Parameter management: Dynamic configuration of standard parameters for the system.
+8. Notification: System notification announcement information release maintenance.
+9. Operation log: system average operation log record and query; system abnormal information log record and query.
+10. Login log: system login log records and queries include login exceptions.
+11. Online users: monitoring the status of active users in the current system.
+12. Timed tasks: online (add, modify, delete) task scheduling, including execution result logs.
+13. code generation: front and back-end code generation (java, html, xml, sql) support CRUD download .
+14. System interface: automatically generate relevant api interface documents according to the business code.
+15. Service monitoring: monitor the current system CPU, memory, disk, stack, and other related information.
+16. Cache monitoring: query the cache information of the system, command statistics, etc.
+17. Online builder: drag and drop form elements to generate the corresponding HTML code.
+18. Connection pool monitoring: monitor the current system database connection pool status and analyze SQL to find out the system performance bottleneck.
 
-## 项目由来
 
-因为在个人项目开发中，需要使用到前后端和postgresql这项数据库技术，于是特此花了一周时间，解决掉未存在的情况。项目合并过程尚遇到许许多多细微的bug，不愿后来者再步我后尘，遂开源此项目，就是这样。
 
-JUST-NetClub-Mr8god
+## Project Origin
+
+Because in the development of personal projects, the need to use the front and back end and PostgreSQL this database technology took a week to solve the non-existent situation. The project merging process still encountered a lot of subtle bugs; I do not want to follow in my footsteps, so open source this project, that's it.
+
+JUST-NetClub-CheverJohn
