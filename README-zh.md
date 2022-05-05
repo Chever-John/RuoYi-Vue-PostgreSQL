@@ -1,10 +1,12 @@
+# RuoYi-Vue-PostgreSQL
+
 [![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](README-zh.md)
 
 [English](README.md) | [中文](README-zh.md)
 
-## Description
+## 平台简介
 
-Ruoyi is a set of all open source rapid development platform, without reservation to individuals and enterprises free use.
+若依是一套全部开源的快速开发平台，毫无保留给个人及企业免费使用。
 
 1. 主要工作是融合两个版本（Ruoyi-vue 和 Ruoyi-PostgreSQL）融合在一起。
 2. 前端采用Vue、Element UI。
