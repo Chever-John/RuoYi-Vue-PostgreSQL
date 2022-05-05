@@ -78,4 +78,4 @@ npm run dev
 
 因为在个人项目开发中，需要使用到前后端和postgresql这项数据库技术，于是特此花了一周时间，解决掉未存在的情况。项目合并过程尚遇到许许多多细微的bug，不愿后来者再步我后尘，遂开源此项目，就是这样。
 
-JUST-NetClub-Mr8god
+JUST-NetClub-CheverJohn
