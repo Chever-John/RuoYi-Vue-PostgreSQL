@@ -1,6 +1,6 @@
 # RuoYi-Vue-PostgreSQL
 
-[![jaywcjlove/sb](https://jaywcjlove.github.io/sb/lang/chinese.svg)](README-zh.md)
+[![七牛云 & 中文](http://cdn.mr8god.cn/img/chinese.svg)](README-zh.md)
 
 [English](README.md) | [中文](README-zh.md)
 
